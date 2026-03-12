@@ -7,12 +7,12 @@ export function updateSuperPlan(value: number, tableNumber: number): GameData {
   const state = updateGameState((data) => {
     const table = data.tables[tableNumber];
 
-    table.superPlan += value;
+    table.superThreat -= value;
 
-    if (table.superPlan >= data.superPlanMax) {
+    if (table.superThreat >= data.superPlanMax) {
       data.phase = PhaseDict.SUPER_WINER;
-    } else if (table.superPlan < 0) {
-      table.superPlan = 0;
+    } else if (table.superThreat < 0) {
+      table.superThreat = 0;
     }
   });
 

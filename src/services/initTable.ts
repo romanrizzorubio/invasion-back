@@ -1,7 +1,5 @@
 import {
   SHIP_MAX,
-  SUPER_LIFE_MAX,
-  SUPER_PLAN_INIT,
 } from '../types/constants';
 import { updateGameState } from '../store/gameStore';
 import { broadcastGame } from '../sockets/socket';
@@ -12,14 +10,15 @@ type InitTableResponse = {
   currentTable: number;
 };
 
-export function initTable(players: PlayerData[]): InitTableResponse {
+export function initTable(players: PlayerData[], expert: boolean): InitTableResponse {
   let currentTable = -1;
 
-  const state = updateGameState((data) => {
+  updateGameState((data) => {
     const table: TableData = {
       players,
-      superLife: SUPER_LIFE_MAX * players.length,
-      superPlan: SUPER_PLAN_INIT * players.length,
+      expert,
+      superDamage: 0,
+      superThreat: 0,
       spiderWoman: false,
       ship: SHIP_MAX * players.length,
       enemy: 0,

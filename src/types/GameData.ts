@@ -5,6 +5,7 @@ export type GameData = {
   tables: TableData[];
   phase: Phase;
   superLifeMax: number;
+  superPlanIni: number;
   superPlanMax: number;
   shipMax: number;
   enemyInit: number;

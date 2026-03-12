@@ -5,6 +5,7 @@ const INITIAL = {
   tables: [],
   phase: PhaseDict.INIT,
   superLifeMax: 0,
+  superPlanIni: 0,
   superPlanMax: 0,
   shipMax: 0,
   enemyInit: 0,
