@@ -87,15 +87,6 @@ export const HeroesDict = {
   WINTER_SOLDIER: 'Soldado de Invierno',
   WOLVERINE: 'Lobezno',
   X_23: 'X-23',
-} as const;
+} as const satisfies Record<string, string>;
 export type Hero = (typeof HeroesDict)[keyof typeof HeroesDict];
-
-export const AspectsDict = {
-  AGGRESSION: 'Agresividad',
-  JUSTICE: 'Justicia',
-  PROTECTION: 'Protección',
-  LEADERSHIP: 'Liderazgo',
-  POOL: 'Masacrismo',
-  BASIC: 'Básicas',
-} as const;
-export type Aspect = (typeof AspectsDict)[keyof typeof AspectsDict];
+export const BannedHeroes: Hero[] = [HeroesDict.SPIDER_WOMAN];

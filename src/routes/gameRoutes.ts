@@ -11,10 +11,11 @@ import {spiderWomanLeaves} from "../services/spiderWomanLeaves";
 import {updateShip} from "../services/updateShip";
 import {updateEnemy} from "../services/updateEnemy";
 import {updateExposed} from "../services/updateExposed";
-import {TableData} from "../types/TableData";
 import {PlayerData} from "../types/PlayerData";
 import {initTable} from "../services/initTable";
 import {resetGame} from "../services/resetGame";
+import {startTables} from "../services/startTables";
+import {getHeroes} from "../services/getHeroes";
 
 interface InitBody {
   players: number;
@@ -55,6 +56,14 @@ router.post('/reset', (_req: Request, res: Response) => {
 router.post('/init-table', (req: Request<TableBody>, res: Response) => {
   const { players } = req.body;
   res.send(initTable(players));
+});
+
+router.get('/heroes', (_req: Request, res: Response) => {
+  res.send(getHeroes());
+});
+
+router.post('/start-tables', (_req: Request, res: Response) => {
+  res.send(startTables());
 });
 
 router.post('/advance', (_req: Request, res: Response) => {
