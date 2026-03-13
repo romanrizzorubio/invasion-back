@@ -20,7 +20,7 @@ export function initTable(players: PlayerData[], expert: boolean): InitTableResp
       superDamage: 0,
       superThreat: 0,
       spiderWoman: false,
-      ship: SHIP_MAX * players.length,
+      ship: 0,
       enemy: 0,
       exposed: 0,
     };

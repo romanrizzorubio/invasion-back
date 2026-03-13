@@ -1,8 +1,5 @@
 import { Router, Request, Response } from 'express';
-import {
-  getData,
-} from '../services/getData';
-import type { GameData } from '../types/GameData';
+import {getData} from '../services/getData';
 import {initGame} from "../services/initGame";
 import {advanceGame} from "../services/advanceGame";
 import {updateSuperLife} from "../services/updateSuperLife";
@@ -11,11 +8,11 @@ import {spiderWomanLeaves} from "../services/spiderWomanLeaves";
 import {updateShip} from "../services/updateShip";
 import {updateEnemy} from "../services/updateEnemy";
 import {updateExposed} from "../services/updateExposed";
-import {PlayerData} from "../types/PlayerData";
 import {initTable} from "../services/initTable";
 import {resetGame} from "../services/resetGame";
 import {startTables} from "../services/startTables";
 import {getHeroes} from "../services/getHeroes";
+import {PlayerData} from "../types/PlayerData";
 
 interface InitBody {
   players: number;
@@ -86,9 +83,9 @@ router.post('/spider-woman', (req: Request<TableNumberBody>, res: Response) => {
   res.send(spiderWomanLeaves(table));
 });
 
-router.post('/ship', (req: Request<TableNumberBody, ValueBody>, res: Response) => {
-  const { value, table } = req.body;
-  res.send(updateShip(value, table));
+router.post('/ship', (req: Request<TableNumberBody>, res: Response) => {
+  const { table } = req.body;
+  res.send(updateShip(table));
 });
 
 router.post('/enemy', (req: Request<TableNumberBody, ValueBody>, res: Response) => {

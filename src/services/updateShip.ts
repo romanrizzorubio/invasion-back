@@ -2,17 +2,16 @@ import { PhaseDict } from '../types/dicts';
 import { updateGameState } from '../store/gameStore';
 import { broadcastGame } from '../sockets/socket';
 import type { GameData } from '../types/GameData';
+import {isOpen} from "../model/ship";
 
-export function updateShip(value: number, tableNumber: number): GameData {
+export function updateShip(tableNumber: number): GameData {
   const state = updateGameState((data) => {
     const table = data.tables[tableNumber];
 
-    table.ship += value;
+    table.ship++;
 
-    if (table.ship <= 0) {
+    if (isOpen(data)) {
       data.phase = PhaseDict.SHIP_OPEN;
-    } else if (table.ship > data.shipMax) {
-      table.ship = data.shipMax;
     }
   });
 
