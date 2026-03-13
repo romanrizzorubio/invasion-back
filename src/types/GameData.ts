@@ -9,7 +9,6 @@ export type GameData = {
   superPlanMax: number;
   shipMax: number;
   enemyInit: number;
-  enemyMax: number;
   exposedMax: number;
   end: number;
 };

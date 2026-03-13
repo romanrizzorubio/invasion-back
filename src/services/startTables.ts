@@ -24,7 +24,6 @@ export function startTables(): GameData {
     data.superPlanMax = SUPER_PLAN_MAX * numPlayers;
     data.shipMax = SHIP_MAX * numPlayers;
     data.enemyInit = (ENEMY_INIT * data.tables.length) + (ENEMY_COMP * numPlayers);
-    data.enemyMax = data.enemyInit;
   });
 
   broadcastGame();
