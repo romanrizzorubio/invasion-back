@@ -4,7 +4,7 @@ import {initGame} from "../services/initGame";
 import {advanceGame} from "../services/advanceGame";
 import {updateSuperLife} from "../services/updateSuperLife";
 import {updateSuperPlan} from "../services/updateSuperPlan";
-import {spiderWomanLeaves} from "../services/spiderWomanLeaves";
+import {updateSpiderWoman} from "../services/updateSpiderWoman";
 import {updateShip} from "../services/updateShip";
 import {updateEnemy} from "../services/updateEnemy";
 import {updateExposed} from "../services/updateExposed";
@@ -78,9 +78,9 @@ router.post('/super-plan', (req: Request<TableNumberBody, ValueBody>, res: Respo
   res.send(updateSuperPlan(value, table));
 });
 
-router.post('/spider-woman', (req: Request<TableNumberBody>, res: Response) => {
-  const { table } = req.body;
-  res.send(spiderWomanLeaves(table));
+router.post('/spider-woman', (req: Request<TableNumberBody, ValueBody>, res: Response) => {
+  const { table, value } = req.body;
+  res.send(updateSpiderWoman(value, table));
 });
 
 router.post('/ship', (req: Request<TableNumberBody>, res: Response) => {

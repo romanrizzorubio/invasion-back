@@ -4,6 +4,7 @@ import {TableData} from "./TableData";
 export type GameData = {
   tables: TableData[];
   phase: Phase;
+  spiderWomanMax: number;
   superLifeMax: number;
   superPlanIni: number;
   superPlanMax: number;

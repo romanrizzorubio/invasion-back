@@ -5,7 +5,7 @@ import {PhaseDict} from "../types/dicts";
 import {
   ENEMY_COMP,
   ENEMY_INIT,
-  SHIP_MAX,
+  SHIP_MAX, SPIDER_WOMAN_MAX,
   SUPER_LIFE_EXP_MAX,
   SUPER_LIFE_MAX,
   SUPER_PLAN_INI,
@@ -19,6 +19,7 @@ export function startTables(): GameData {
     const numPlayers = normal + expert;
 
     data.phase = PhaseDict.SUPER;
+    data.spiderWomanMax = SPIDER_WOMAN_MAX;
     data.superLifeMax = (SUPER_LIFE_MAX * normal) + (SUPER_LIFE_EXP_MAX * expert);
     data.superPlanIni = SUPER_PLAN_INI * numPlayers;
     data.superPlanMax = SUPER_PLAN_MAX * numPlayers;

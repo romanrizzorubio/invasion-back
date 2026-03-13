@@ -1,3 +1,4 @@
+export const SPIDER_WOMAN_MAX = 5;
 export const SUPER_LIFE_MAX = 8;
 export const SUPER_LIFE_EXP_MAX = 10;
 export const SUPER_PLAN_INI = 1;
