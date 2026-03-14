@@ -1,8 +1,8 @@
 export const SPIDER_WOMAN_MAX = 5;
-export const SUPER_LIFE_MAX = 8;
-export const SUPER_LIFE_EXP_MAX = 10;
+export const SUPER_LIFE_MAX = 12;
+export const SUPER_LIFE_EXP_MAX = 15;
 export const SUPER_PLAN_INI = 1;
-export const SUPER_PLAN_MAX = 8;
+export const SUPER_PLAN_MAX = 7;
 export const SHIP_MAX = 1;
 export const ENEMY_INIT = 10;
 export const ENEMY_COMP = 10;
