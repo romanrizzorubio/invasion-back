@@ -13,6 +13,7 @@ import {resetGame} from "../services/resetGame";
 import {startTables} from "../services/startTables";
 import {getHeroes} from "../services/getHeroes";
 import {PlayerData} from "../types/PlayerData";
+import {completeVeranke} from "../services/completeVeranke";
 
 interface InitBody {
   players: number;
@@ -86,6 +87,11 @@ router.post('/spider-woman', (req: Request<TableNumberBody, ValueBody>, res: Res
 router.post('/ship', (req: Request<TableNumberBody>, res: Response) => {
   const { table } = req.body;
   res.send(updateShip(table));
+});
+
+router.post('/complete', (req: Request<TableNumberBody>, res: Response) => {
+  const { table } = req.body;
+  res.send(completeVeranke(table));
 });
 
 router.post('/enemy', (req: Request<TableNumberBody, ValueBody>, res: Response) => {

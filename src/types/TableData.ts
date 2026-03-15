@@ -7,6 +7,7 @@ export type TableData = {
   superDamage: number;
   superThreat: number;
   ship: number;
+  completeVeranke: boolean;
   enemy: number;
   exposed: number;
 };

@@ -4,7 +4,7 @@ import type {GameData} from "../types/GameData";
 import {PhaseDict} from "../types/dicts";
 import {
   ENEMY_COMP,
-  ENEMY_INIT,
+  ENEMY_INIT, EXPOSED_MAX,
   SHIP_MAX, SPIDER_WOMAN_MAX,
   SUPER_LIFE_EXP_MAX,
   SUPER_LIFE_MAX,
@@ -24,6 +24,7 @@ export function startTables(): GameData {
     data.superPlanIni = SUPER_PLAN_INI * numPlayers;
     data.superPlanMax = SUPER_PLAN_MAX * numPlayers;
     data.shipMax = SHIP_MAX * numPlayers;
+    data.exposedMax = EXPOSED_MAX * numPlayers;
     data.enemyInit = (ENEMY_INIT * data.tables.length) + (ENEMY_COMP * numPlayers);
   });
 

@@ -19,8 +19,9 @@ export function initTable(players: PlayerData[], expert: boolean): InitTableResp
       expert,
       superDamage: 0,
       superThreat: 0,
-      spiderWoman: false,
+      spiderWoman: 0,
       ship: 0,
+      completeVeranke: false,
       enemy: 0,
       exposed: 0,
     };

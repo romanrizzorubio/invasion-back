@@ -2,17 +2,13 @@ import { PhaseDict } from '../types/dicts';
 import { updateGameState } from '../store/gameStore';
 import { broadcastGame } from '../sockets/socket';
 import type { GameData } from '../types/GameData';
-import {isDefeated} from "../model/enemy";
+import {isOpen} from "../model/ship";
 
-export function updateEnemy(value: number, tableNumber: number): GameData {
+export function completeVeranke(tableNumber: number): GameData {
   const state = updateGameState((data) => {
     const table = data.tables[tableNumber];
 
-    table.enemy += value;
-
-    if (isDefeated(data)) {
-      data.phase = PhaseDict.VERANKE_LOSE;
-    }
+    table.completeVeranke = true;
   });
 
   broadcastGame();

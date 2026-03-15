@@ -8,8 +8,8 @@ export const PhaseDict = {
   SHIP_FALL: 6,
   SHIP_OPEN: 7,
   ENEMY: 8,
-  OSBORN: 9,
-  OSBORN_SHIELD: 10,
+  VERANKE_LOSE: 9,
+  VERANKE_WIN: 10,
 } as const;
 export type Phase = (typeof PhaseDict)[keyof typeof PhaseDict];
 
