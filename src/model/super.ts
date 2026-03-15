@@ -8,13 +8,6 @@ export const getThreat = (data: GameData) =>
   data.tables.reduce((acc, table) =>
     acc + table.superThreat, 0);
 
-export const getAvailableDamage = (data: GameData) => {
-  const damage = getDamage(data);
-  const superLifeMax = data.superLifeMax;
-
-  return superLifeMax - damage;
-};
-
 export const isDefeated = (data: GameData) => {
   const damage = getDamage(data);
 

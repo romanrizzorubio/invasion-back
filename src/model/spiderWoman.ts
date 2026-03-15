@@ -1,18 +1,11 @@
 import {GameData} from "../types/GameData";
 
-export const getDamage = (data: GameData) => data.tables.reduce((acc, table) =>
-  acc + table.spiderWoman, 0);
-
-export const getAvailableDamage = (data: GameData) => {
-  const damage = getDamage(data);
-  const spiderWomanMax = data.spiderWomanMax;
-
-  return spiderWomanMax - damage;
-};
+export const getLife = (data: GameData) => data.tables.reduce((acc, table) =>
+  acc > table.spiderWoman ? acc : table.spiderWoman, 0);
 
 export const isDefeated = (data: GameData) => {
-  const damage = getDamage(data);
+  const life = getLife(data);
 
-  return damage >= data.spiderWomanMax;
+  return life >= data.spiderWomanMax;
 };
 
