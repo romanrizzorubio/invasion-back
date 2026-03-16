@@ -14,6 +14,7 @@ import {startTables} from "../services/startTables";
 import {getHeroes} from "../services/getHeroes";
 import {PlayerData} from "../types/PlayerData";
 import {completeVeranke} from "../services/completeVeranke";
+import {endGame} from "../services/endGame";
 
 interface InitBody {
   players: number;
@@ -67,6 +68,10 @@ router.post('/start-tables', (_req: Request, res: Response) => {
 
 router.post('/advance', (_req: Request, res: Response) => {
   res.send(advanceGame());
+});
+
+router.post('/end', (_req: Request, res: Response) => {
+  res.send(endGame());
 });
 
 router.post('/super-life', (req: Request<TableNumberBody, ValueBody>, res: Response) => {
