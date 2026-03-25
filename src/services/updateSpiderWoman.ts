@@ -6,7 +6,9 @@ import {isDefeated} from "../model/spiderWoman";
 
 export function updateSpiderWoman(value: number, tableNumber: number): GameData {
   const state = updateGameState((data) => {
-    const table = data.tables[tableNumber];
+    const table = data.tables.find((table) => table.tableNumber === tableNumber);
+
+    if (!table) throw new Error('Table not found');
 
     if (value > 0) {
       table.spiderWoman += value;

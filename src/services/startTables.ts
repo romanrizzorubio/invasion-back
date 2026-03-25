@@ -26,6 +26,12 @@ export function startTables(): GameData {
     data.shipMax = SHIP_MAX * numPlayers;
     data.exposedMax = EXPOSED_MAX * numPlayers;
     data.enemyInit = (ENEMY_INIT * data.tables.length) + (ENEMY_COMP * numPlayers);
+
+    const uatuTable = 0;
+    const aronTable = Math.ceil(data.tables.length / 2);
+
+    data.tables[uatuTable].uatu = true;
+    data.tables[aronTable].aron = true;
   });
 
   broadcastGame();

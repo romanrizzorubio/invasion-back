@@ -2,13 +2,11 @@ import { updateGameState } from '../store/gameStore';
 import { broadcastGame } from '../sockets/socket';
 import type { GameData } from '../types/GameData';
 
-export function completeVeranke(tableNumber: number): GameData {
+export function changeUatu(tableNumber: number): GameData {
   const state = updateGameState((data) => {
-    const table = data.tables.find((table) => table.tableNumber === tableNumber);
-
-    if (!table) throw new Error('Table not found');
-
-    table.completeVeranke = true;
+    data.tables.forEach((table) => {
+      table.uatu = table.tableNumber === tableNumber;
+    })
   });
 
   broadcastGame();

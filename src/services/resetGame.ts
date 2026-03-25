@@ -1,4 +1,4 @@
-import {resetGameState, updateGameState} from '../store/gameStore';
+import {resetGameState} from '../store/gameStore';
 import { broadcastGame } from '../sockets/socket';
 import type { GameData } from '../types/GameData';
 

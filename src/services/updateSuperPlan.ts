@@ -7,7 +7,9 @@ import {getThreat, isCompleted} from "../model/super";
 export function updateSuperPlan(value: number, tableNumber: number): GameData {
   const state = updateGameState((data) => {
     const threat = getThreat(data);
-    const table = data.tables[tableNumber];
+    const table = data.tables.find((table) => table.tableNumber === tableNumber);
+
+    if (!table) throw new Error('Table not found');
 
     const actualThreat = threat + value < 0 ? -threat : value;
 

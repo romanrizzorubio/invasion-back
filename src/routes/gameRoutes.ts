@@ -15,6 +15,8 @@ import {getHeroes} from "../services/getHeroes";
 import {PlayerData} from "../types/PlayerData";
 import {completeVeranke} from "../services/completeVeranke";
 import {endGame} from "../services/endGame";
+import {changeUatu} from "../services/changeUatu";
+import {changeAron} from "../services/changeAron";
 
 interface InitBody {
   players: number;
@@ -81,39 +83,91 @@ router.post('/end', (_req: Request, res: Response) => {
   res.send(endGame());
 });
 
+router.post('/uatu', (req: Request<TableNumberBody>, res: Response) => {
+  const { table } = req.body;
+  res.send(changeUatu(table));
+});
+
+router.post('/aron', (req: Request<TableNumberBody>, res: Response) => {
+  const { table } = req.body;
+  res.send(changeAron(table));
+});
+
 router.post('/super-life', (req: Request<TableNumberBody, ValueBody>, res: Response) => {
   const { value, table } = req.body;
-  res.send(updateSuperLife(value, table));
+
+  try {
+    res.send(updateSuperLife(value, table));
+  } catch (error) {
+    console.error(error);
+    res.status(400).send({ error: 'Invalid table number' });
+  }
 });
 
 router.post('/super-plan', (req: Request<TableNumberBody, ValueBody>, res: Response) => {
   const { value, table } = req.body;
-  res.send(updateSuperPlan(value, table));
+
+  try {
+    res.send(updateSuperPlan(value, table));
+  } catch (error) {
+    console.error(error);
+    res.status(400).send({ error: 'Invalid table number' });
+  }
 });
 
 router.post('/spider-woman', (req: Request<TableNumberBody, ValueBody>, res: Response) => {
   const { table, value } = req.body;
-  res.send(updateSpiderWoman(value, table));
+
+  try {
+    res.send(updateSpiderWoman(value, table));
+  } catch (error) {
+    console.error(error);
+    res.status(400).send({ error: 'Invalid table number' });
+  }
 });
 
 router.post('/ship', (req: Request<TableNumberBody>, res: Response) => {
   const { table } = req.body;
-  res.send(updateShip(table));
+
+  try {
+    res.send(updateShip(table));
+  } catch (error) {
+    console.error(error);
+    res.status(400).send({ error: 'Invalid table number' });
+  }
 });
 
 router.post('/complete', (req: Request<TableNumberBody>, res: Response) => {
   const { table } = req.body;
-  res.send(completeVeranke(table));
+
+  try {
+    res.send(completeVeranke(table));
+  } catch (error) {
+    console.error(error);
+    res.status(400).send({ error: 'Invalid table number' });
+  }
 });
 
 router.post('/enemy', (req: Request<TableNumberBody, ValueBody>, res: Response) => {
   const { value, table } = req.body;
-  res.send(updateEnemy(value, table));
+
+  try {
+    res.send(updateEnemy(value, table));
+  } catch (error) {
+    console.error(error);
+    res.status(400).send({ error: 'Invalid table number' });
+  }
 });
 
 router.post('/exposed', (req: Request<TableNumberBody, ValueBody>, res: Response) => {
   const { value, table } = req.body;
-  res.send(updateExposed(value, table));
+
+  try {
+    res.send(updateExposed(value, table));
+  } catch (error) {
+    console.error(error);
+    res.status(400).send({ error: 'Invalid table number' });
+  }
 });
 
 export default router;

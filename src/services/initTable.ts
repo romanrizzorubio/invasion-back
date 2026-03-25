@@ -15,6 +15,8 @@ export function initTable(tableNumber: number, players: PlayerData[], expert: bo
         tableNumber,
         players,
         expert,
+        uatu: false,
+        aron: false,
         superDamage: 0,
         superThreat: 0,
         spiderWoman: 0,
