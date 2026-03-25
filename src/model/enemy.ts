@@ -1,7 +1,7 @@
-import {GameData} from "../types/GameData";
+import { GameData } from "../types/GameData";
 
-export const getEnemy = (data: GameData) => data.tables.reduce((acc, table) =>
-  acc + table.enemy, 0);
+export const getEnemy = (data: GameData) =>
+  data.tables.reduce((acc, table) => acc + table.enemy, 0);
 
 export const isDefeated = (data: GameData) => {
   const threat = getEnemy(data);

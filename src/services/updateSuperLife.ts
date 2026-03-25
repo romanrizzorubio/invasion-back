@@ -1,14 +1,14 @@
-import { PhaseDict } from '../types/dicts';
-import { updateGameState } from '../store/gameStore';
-import { broadcastGame } from '../sockets/socket';
-import type { GameData } from '../types/GameData';
-import {getDamage, isDefeated} from "../model/super";
+import { PhaseDict } from "../types/dicts";
+import { updateGameState } from "../store/gameStore";
+import { broadcastGame } from "../sockets/socket";
+import type { GameData } from "../types/GameData";
+import { getDamage, isDefeated } from "../model/super";
 
 export function updateSuperLife(value: number, tableNumber: number): GameData {
   const state = updateGameState((data) => {
     const table = data.tables.find((table) => table.tableNumber === tableNumber);
 
-    if (!table) throw new Error('Table not found');
+    if (!table) throw new Error("Table not found");
 
     if (value > 0) {
       table.superDamage += value;

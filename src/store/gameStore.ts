@@ -1,5 +1,5 @@
-import type { GameData } from '../types/GameData';
-import { PhaseDict } from '../types/dicts';
+import type { GameData } from "../types/GameData";
+import { PhaseDict } from "../types/dicts";
 
 const INITIAL = {
   tables: [],
@@ -12,11 +12,11 @@ const INITIAL = {
   completeVeranke: false,
   enemyInit: 0,
   exposedMax: 0,
-  end: Date.now(),
+  end: Date.now()
 };
 
 let gameState: GameData = {
-  ...INITIAL,
+  ...INITIAL
 };
 
 export function getGameState(): GameData {
@@ -35,7 +35,7 @@ export function updateGameState(updater: (state: GameData) => void): GameData {
 
 export function resetGameState(): GameData {
   gameState = {
-    ...INITIAL,
+    ...INITIAL
   };
 
   return gameState;

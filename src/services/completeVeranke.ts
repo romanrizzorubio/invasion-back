@@ -1,12 +1,12 @@
-import { updateGameState } from '../store/gameStore';
-import { broadcastGame } from '../sockets/socket';
-import type { GameData } from '../types/GameData';
+import { updateGameState } from "../store/gameStore";
+import { broadcastGame } from "../sockets/socket";
+import type { GameData } from "../types/GameData";
 
 export function completeVeranke(tableNumber: number): GameData {
   const state = updateGameState((data) => {
     const table = data.tables.find((table) => table.tableNumber === tableNumber);
 
-    if (!table) throw new Error('Table not found');
+    if (!table) throw new Error("Table not found");
 
     table.completeVeranke = true;
   });

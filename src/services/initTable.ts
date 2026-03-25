@@ -1,15 +1,15 @@
-import { updateGameState } from '../store/gameStore';
-import { broadcastGame } from '../sockets/socket';
-import {TableData} from "../types/TableData";
-import {PlayerData} from "../types/PlayerData";
-import {GameData} from "../types/GameData";
+import { updateGameState } from "../store/gameStore";
+import { broadcastGame } from "../sockets/socket";
+import { TableData } from "../types/TableData";
+import { PlayerData } from "../types/PlayerData";
+import { GameData } from "../types/GameData";
 
 export function initTable(tableNumber: number, players: PlayerData[], expert: boolean): GameData {
   const state = updateGameState((data) => {
     const currentTable = data.tables.find((table) => table.tableNumber === tableNumber);
 
     if (currentTable) {
-      throw new Error('Table already exists');
+      throw new Error("Table already exists");
     } else {
       const table: TableData = {
         tableNumber,
@@ -23,7 +23,7 @@ export function initTable(tableNumber: number, players: PlayerData[], expert: bo
         ship: 0,
         completeVeranke: false,
         enemy: 0,
-        exposed: 0,
+        exposed: 0
       };
 
       data.tables.push(table);
