@@ -1,38 +1,33 @@
-import {
-  SHIP_MAX,
-} from '../types/constants';
 import { updateGameState } from '../store/gameStore';
 import { broadcastGame } from '../sockets/socket';
 import {TableData} from "../types/TableData";
 import {PlayerData} from "../types/PlayerData";
+import {GameData} from "../types/GameData";
 
-type InitTableResponse = {
-  currentTable: number;
-};
+export function initTable(tableNumber: number, players: PlayerData[], expert: boolean): GameData {
+  const state = updateGameState((data) => {
+    const currentTable = data.tables.find((table) => table.tableNumber === tableNumber);
 
-export function initTable(players: PlayerData[], expert: boolean): InitTableResponse {
-  let currentTable = -1;
+    if (currentTable) {
+      throw new Error('Table already exists');
+    } else {
+      const table: TableData = {
+        tableNumber,
+        players,
+        expert,
+        superDamage: 0,
+        superThreat: 0,
+        spiderWoman: 0,
+        ship: 0,
+        completeVeranke: false,
+        enemy: 0,
+        exposed: 0,
+      };
 
-  updateGameState((data) => {
-    const table: TableData = {
-      players,
-      expert,
-      superDamage: 0,
-      superThreat: 0,
-      spiderWoman: 0,
-      ship: 0,
-      completeVeranke: false,
-      enemy: 0,
-      exposed: 0,
-    };
-
-    data.tables.push(table);
-
-    currentTable = data.tables.indexOf(table);
+      data.tables.push(table);
+    }
   });
 
   broadcastGame();
-  return {
-    currentTable,
-  };
+  return state;
 }

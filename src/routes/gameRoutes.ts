@@ -30,6 +30,7 @@ interface TableNumberBody {
 }
 
 interface TableBody {
+  table: number;
   players: PlayerData[];
   expert: boolean;
 }
@@ -54,8 +55,14 @@ router.post('/reset', (_req: Request, res: Response) => {
 });
 
 router.post('/init-table', (req: Request<TableBody>, res: Response) => {
-  const { players, expert } = req.body;
-  res.send(initTable(players, expert));
+  const { table, players, expert } = req.body;
+
+  try {
+    const data = initTable(table, players, expert);
+    res.send(data);
+  } catch (error) {
+    res.status(400).send(error);
+  }
 });
 
 router.get('/heroes', (_req: Request, res: Response) => {
