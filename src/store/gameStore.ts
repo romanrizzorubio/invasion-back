@@ -1,7 +1,7 @@
 import type { GameData } from "../types/GameData";
 import { PhaseDict } from "../types/dicts";
 
-const INITIAL = {
+const INITIAL: GameData = {
   tables: [],
   phase: PhaseDict.INIT,
   superLifeMax: 0,
@@ -9,10 +9,10 @@ const INITIAL = {
   superPlanMax: 0,
   spiderWomanMax: 0,
   shipMax: 0,
-  completeVeranke: false,
   enemyInit: 0,
   exposedMax: 0,
-  end: Date.now()
+  end: Date.now(),
+  watchers: 0,
 };
 
 let gameState: GameData = {

@@ -11,12 +11,13 @@ import {
   SUPER_LIFE_EXP_MAX,
   SUPER_LIFE_MAX,
   SUPER_PLAN_INI,
-  SUPER_PLAN_MAX
+  SUPER_PLAN_MAX, WATCHER_TABLE
 } from "../types/constants";
 import { getNumPlayers } from "../model/players";
 
 export function startTables(): GameData {
   const state = updateGameState((data) => {
+
     const { normal, expert } = getNumPlayers(data);
     const numPlayers = normal + expert;
 
@@ -28,12 +29,18 @@ export function startTables(): GameData {
     data.shipMax = SHIP_MAX * numPlayers;
     data.exposedMax = EXPOSED_MAX * numPlayers;
     data.enemyInit = ENEMY_INIT * data.tables.length + ENEMY_COMP * numPlayers;
+    data.watchers = Math.floor(data.tables.length / WATCHER_TABLE);
 
-    const uatuTable = 0;
-    const aronTable = Math.ceil(data.tables.length / 2);
+    const uatuDiff = Math.floor(data.tables.length / (data.watchers * 2));
+    const aronDiff = WATCHER_TABLE - uatuDiff;
+    let tableIndex = Math.floor(Math.random() * uatuDiff);
 
-    data.tables[uatuTable].uatu = true;
-    data.tables[aronTable].aron = true;
+    for (let i = 0; i < data.watchers; i++) {
+      data.tables[tableIndex].uatu = true;
+      tableIndex+=aronDiff;
+      data.tables[tableIndex].aron = true;
+      tableIndex+=uatuDiff;
+    }
   });
 
   broadcastGame();

@@ -17,6 +17,7 @@ import { completeVeranke } from "../services/completeVeranke";
 import { endGame } from "../services/endGame";
 import { changeUatu } from "../services/changeUatu";
 import { changeAron } from "../services/changeAron";
+import {HeroesDict} from "../types/dicts";
 
 interface InitBody {
   players: number;
