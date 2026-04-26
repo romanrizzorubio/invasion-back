@@ -17,7 +17,7 @@ import { completeVeranke } from "../services/completeVeranke";
 import { endGame } from "../services/endGame";
 import { changeUatu } from "../services/changeUatu";
 import { changeAron } from "../services/changeAron";
-import {HeroesDict} from "../types/dicts";
+import { resetTable } from "../services/resetTable";
 
 interface InitBody {
   players: number;
@@ -26,6 +26,10 @@ interface InitBody {
 
 interface ValueBody {
   value: number;
+}
+
+interface TableWatcherBody {
+  next: boolean;
 }
 
 interface TableNumberBody {
@@ -68,6 +72,17 @@ router.post("/init-table", (req: Request<TableBody>, res: Response) => {
   }
 });
 
+router.post("/reset-table", (req: Request<TableNumberBody>, res: Response) => {
+  const { table } = req.body;
+
+  try {
+    const data = resetTable(table);
+    res.send(data);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
 router.get("/heroes", (_req: Request, res: Response) => {
   res.send(getHeroes());
 });
@@ -84,14 +99,14 @@ router.post("/end", (_req: Request, res: Response) => {
   res.send(endGame());
 });
 
-router.post("/uatu", (req: Request<TableNumberBody>, res: Response) => {
-  const { table } = req.body;
-  res.send(changeUatu(table));
+router.post("/uatu", (req: Request<TableWatcherBody>, res: Response) => {
+  const { next } = req.body;
+  res.send(changeUatu(next));
 });
 
-router.post("/aron", (req: Request<TableNumberBody>, res: Response) => {
-  const { table } = req.body;
-  res.send(changeAron(table));
+router.post("/aron", (req: Request<TableWatcherBody>, res: Response) => {
+  const { next } = req.body;
+  res.send(changeAron(next));
 });
 
 router.post("/super-life", (req: Request<TableNumberBody, ValueBody>, res: Response) => {

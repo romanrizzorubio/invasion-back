@@ -6,17 +6,15 @@ import { GameData } from "../types/GameData";
 
 export function initTable(tableNumber: number, players: PlayerData[], expert: boolean): GameData {
   const state = updateGameState((data) => {
-    const currentTable = data.tables.find((table) => table.tableNumber === tableNumber);
+    const currentTable = data.tables[tableNumber - 1];
 
     if (currentTable) {
       throw new Error("Table already exists");
     } else {
       const table: TableData = {
-        tableNumber,
         players,
         expert,
-        uatu: false,
-        aron: false,
+        saved: true,
         superDamage: 0,
         superThreat: 0,
         spiderWoman: 0,
@@ -26,7 +24,7 @@ export function initTable(tableNumber: number, players: PlayerData[], expert: bo
         exposed: 0
       };
 
-      data.tables.push(table);
+      data.tables[tableNumber - 1] = table;
     }
   });
 

@@ -12,5 +12,6 @@ export type GameData = {
   enemyInit: number;
   exposedMax: number;
   end: number;
-  watchers: number;
+  uatu?: number;
+  aron?: number;
 };

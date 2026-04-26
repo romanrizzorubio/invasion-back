@@ -11,8 +11,7 @@ const INITIAL: GameData = {
   shipMax: 0,
   enemyInit: 0,
   exposedMax: 0,
-  end: Date.now(),
-  watchers: 0,
+  end: Date.now()
 };
 
 let gameState: GameData = {

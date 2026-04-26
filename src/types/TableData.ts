@@ -1,11 +1,9 @@
 import { PlayerData } from "./PlayerData";
 
 export type TableData = {
-  tableNumber: number;
   players: PlayerData[];
+  saved: boolean;
   expert: boolean;
-  uatu: boolean;
-  aron: boolean;
   spiderWoman: number;
   superDamage: number;
   superThreat: number;

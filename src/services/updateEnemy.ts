@@ -6,7 +6,7 @@ import { isDefeated } from "../model/enemy";
 
 export function updateEnemy(value: number, tableNumber: number): GameData {
   const state = updateGameState((data) => {
-    const table = data.tables.find((table) => table.tableNumber === tableNumber);
+    const table = data.tables[tableNumber - 1];
 
     if (!table) throw new Error("Table not found");
 
